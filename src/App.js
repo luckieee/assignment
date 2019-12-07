@@ -25,20 +25,15 @@ class App extends Component {
     };
 
     this.showSearh = this.showSearh.bind(this);
-    //this.searhKey = this.searhKey.bind(this);
-    this.sortBy = this.sortBy.bind(this);
-    //this.removeCart = this.removeCart.bind(this);
-    //this.countCart = this.countCart.bind(this);
-    //this.debounceFunc = this.debounceFunc.bind(this);
-    //this.debounceEvent = this.debounceEvent.bind(this);
     
-  }
+    this.sortBy = this.sortBy.bind(this);
+}
 
   
 
 
   componentDidMount(){
-    /*
+    
     axios.get('https://api.myjson.com/bins/qzuzi')
       .then(response => {
         
@@ -47,76 +42,6 @@ class App extends Component {
       }, error => {
         //console.log(error);
       });
-      */
-
-      var x = [
-        {
-          "id": 9090,
-          "name": "Item1",
-          "price": 200,
-          "discount": 10,
-          "category": "fiction",
-          "img_url": "http://lorempixel.com/500/600/technics/"
-        },
-        {
-          "id": 9091,
-          "name": "Item2",
-          "price": 250,
-          "discount": 15,
-          "category": "literature",
-          "img_url": "http://lorempixel.com/500/600/technics/"
-        },
-        {
-          "id": 9092,
-          "name": "Item3",
-          "price": 320,
-          "discount": 5,
-          "category": "literature",
-          "img_url": "http://lorempixel.com/500/600/technics/"
-        },
-        {
-          "id": 9093,
-          "name": "Item4",
-          "price": 290,
-          "discount": 0,
-          "category": "thriller",
-          "img_url": "http://lorempixel.com/500/600/technics/"
-        },
-        {
-          "id": 9094,
-          "name": "Item1",
-          "price": 500,
-          "discount": 25,
-          "category": "thriller",
-          "img_url": "http://lorempixel.com/500/600/technics/"
-        },
-        {
-          "id": 9095,
-          "name": "Item2",
-          "price": 150,
-          "discount": 5,
-          "category": "literature",
-          "img_url": "http://lorempixel.com/500/600/technics/"
-        },
-        {
-          "id": 9096,
-          "name": "Item3",
-          "price": 700,
-          "discount": 22,
-          "category": "literature",
-          "img_url": "http://lorempixel.com/500/600/technics/"
-        },
-        {
-          "id": 9097,
-          "name": "Item4",
-          "price": 350,
-          "discount": 18,
-          "category": "fiction",
-          "img_url": "http://lorempixel.com/500/600/technics/"
-        }
-      ];
-
-      this.setState({ maindata : x, oldData : x })
   }
 
   showSearh(){
@@ -124,8 +49,6 @@ class App extends Component {
   }
 
   searhKey = e => {
-    //console.log("--", e);
-
     const searchedWord = e.target.value;
     
     const updatedList = this.state.oldData.filter(function (item) {
@@ -133,20 +56,6 @@ class App extends Component {
     });
     this.setState({ maindata : updatedList })
   }
-
-  /*
-  debounceFunc = (fn, delay) => {
-    
-    let time ;
-    return function(){
-      clearTimeout(time);
-      time = setTimeout(() => {
-        fn.apply(this)
-      }, delay)
-    }
-  }
-  */
-  //debounceEvent = this.debounceFunc(this.searhKey.bind(this), 300);
 
   addTocart = (id, name, img, price, oldpr, disc) => {
     var flag = true;
@@ -175,14 +84,7 @@ class App extends Component {
     let total = price + this.state.total,
         realTot = oldpr + this.state.realtot ;
     this.setState({ cart : this.state.cart, itemCnt: this.state.cart.length, total : total, realtot: realTot});
-    // setTimeout(() => {
       
-    //   //console.log(this.state.total)
-    // }, 0)
-    
-
-    
-    
   }
 
 
@@ -207,8 +109,7 @@ class App extends Component {
   }
   
   countCart = (id, val) => {
-    //console.log(this.state.cart)
-
+   
     this.state.cart.forEach((item, ind) => {
       if(item.id === id){
         
@@ -238,17 +139,7 @@ class App extends Component {
   }
 
   removeCart = id => {
-    // let removedAr = this.state.cart.filter(function(item) {
-    //   if(item.id === id){
-    //     console.log(item);
-    //     let tot = this.state.total - item.price,
-    //     otlPrc = this.state.realtot - item.oldpr;
-    //     this.setState({ total : tot, realtot: otlPrc })
-    //   }
-    //   return item.id != id;
-    // });
-
-    //this.setState({ cart : removedAr })
+    
 
     this.state.cart.forEach((item, ind) => {
       if(item.id === id){
