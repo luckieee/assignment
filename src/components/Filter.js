@@ -1,14 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-const Filter = (props)=>{
-    
-    return(
-            <div className="filter-container">
-                
-                asdad
-               
-            </div>  
-    )
+const Filter = props => {
+  return <div className="filter-container"></div>
 }
 
-export default Filter;
+export default Filter

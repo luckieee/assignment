@@ -12,7 +12,7 @@ const Header = (props)=>{
                 
                 <h1 className="left logo">
                     <a href="/#/">
-                        <FontAwesomeIcon icon={faStar} color={'yellow'} size="2x" />
+                        <FontAwesomeIcon icon={faStar} color={'yellow'} size="1x" />
                     </a>
                 </h1>
                 

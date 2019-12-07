@@ -23,7 +23,7 @@ class Product extends React.Component {
         
         <section className="middle">
           <Filter />
-          <Listing addTocart={this.props.addTocart} priceOrder={this.props.priceOrder} finalData={this.props.finalData} sortBy={this.props.sortBy}/>
+          <Listing mobileFilter={this.props.mobileFilter} sortMobile={this.props.sortMobile} sortMobileCancel={this.props.sortMobileCancel} addTocart={this.props.addTocart} priceOrder={this.props.priceOrder} finalData={this.props.finalData} sortBy={this.props.sortBy}/>
         </section>
       </div>
     );

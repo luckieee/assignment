@@ -17,26 +17,27 @@ const Cart = (props)=>{
                                     <div className="cont img">
                                         <img src={item.img} alt={item.name} />
                                     </div>
-                                    <div className="cont detail">
-                                        <h2>{item.name}</h2>
-                                        <div className="pric">₹​ {item.price } 
-                                            {item.disc ? (<span className="rlprice">{item.oldpr}</span>) : ''}
+                                    <div className="other-cart-detail">
+                                        <div className="cont detail">
+                                            <h2>{item.name}</h2>
+                                            <div className="pric">₹​ {item.price } 
+                                                {item.disc ? (<span className="rlprice">{item.oldpr}</span>) : ''}
 
-                                            {item.disc ? (<span className="discount" >{item.disc}%off</span>) : ''}
+                                                {item.disc ? (<span className="discount" >{item.disc}%off</span>) : ''}
+                                            </div>
+                                        
                                         </div>
-                                       
-                                    </div>
-                                    <div className="cont cnt">
-                                        <div className="vert">
-                                            <button className="minus" onClick={ () => props.countCart(item.id, 'minus') }>-</button>
-                                            <div className="realcnt">{item.cnt}</div>
-                                            <button className="plus" onClick={ () => props.countCart(item.id, 'plus') }>+</button>  
+                                        <div className="cont cnt">
+                                            <div className="vert">
+                                                <button className="minus" onClick={ () => props.countCart(item.id, 'minus') }>-</button>
+                                                <div className="realcnt">{item.cnt}</div>
+                                                <button className="plus" onClick={ () => props.countCart(item.id, 'plus') }>+</button>  
+                                            </div>
+                                        </div>
+                                        <div className="cont remove">
+                                            <button onClick={ () => props.removeCart(item.id) }>Remove</button>
                                         </div>
                                     </div>
-                                    <div className="cont remove">
-                                        <button onClick={ () => props.removeCart(item.id) }>Remove</button>
-                                    </div>
-
                                 </div>
                                 )
                             })

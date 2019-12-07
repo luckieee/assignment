@@ -253,8 +253,8 @@ class App extends Component {
     this.state.cart.forEach((item, ind) => {
       if(item.id === id){
         //console.log(item);
-        let tot = this.state.total - item.price,
-        otlPrc = this.state.realtot - item.oldpr;
+        let tot = this.state.total - item.price * item.cnt,
+        otlPrc = this.state.realtot - item.oldpr * item.cnt;
         this.setState({ total : tot, realtot: otlPrc })
       }
     });
@@ -264,7 +264,29 @@ class App extends Component {
 
     this.setState({ cart : removedAr, itemCnt: this.state.itemCnt - 1 })
   }
+  sortMobile = () => { 
+    let val = document.querySelector('input[name="priceorder"]:checked');
+    
+    if(val){
+      let fVal = val.value;
+      this.sortBy(fVal);
+      setTimeout(() => {
+        document.querySelector('.overlay').style.display = 'none';
+      }, 500)
+    }else{
+      alert("Please check");
+    }
+    
+    
+  }
+
+  sortMobileCancel = () => {
+    document.querySelector('.overlay').style.display = 'none';
+  }
   
+  mobileFilter = () => {
+    document.querySelector('.overlay').style.display = 'block';
+  }
   render() {
     return (
       <>
@@ -273,7 +295,7 @@ class App extends Component {
           <div className="App">
             <HashRouter>
               <Route exact path="/" 
-                component={() => (<Product addTocart={this.addTocart} priceOrder={this.state.priceOrder} sortBy={this.sortBy} finalData={this.state.maindata} showSearh={this.showSearh} searhKey={this.searhKey} />) }
+                component={() => (<Product mobileFilter={this.mobileFilter} sortMobile={this.sortMobile}  sortMobileCancel={this.sortMobileCancel} addTocart={this.addTocart} priceOrder={this.state.priceOrder} sortBy={this.sortBy} finalData={this.state.maindata} showSearh={this.showSearh} searhKey={this.searhKey} />) }
 
               />
               <Route exact strict 

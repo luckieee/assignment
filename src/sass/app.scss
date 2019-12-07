@@ -1,9 +1,9 @@
 
 $yellow : #ffbc00;
 $grey : #444;
-$blue: blue;
-$bg: #f2f2f2;
-$border:#989696;
+$blue: #486ae2;
+$bg: #f1f3f6;
+$border:#d9dcdc;
 $green: green;
 $white: #fff;
 $red: red;
@@ -37,6 +37,9 @@ body{
   font-family: Verdana;
   font-size:12px;
   background-color: $bg;
+  .App{
+    margin-top: 68px;
+  }
   // .App{
   //   display: flex;
   //   flex-direction: column;
@@ -48,6 +51,19 @@ body{
   .header-container{
     background:$blue;
     display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 8px 0;
+    .logo{
+      @include mobile{
+        svg{
+          width: 35px;
+        }
+      }
+    }
     h1{
       margin:10px 10px 10px 20px;
       padding:0;
@@ -87,37 +103,87 @@ body{
   }
   .middle{
     overflow: hidden;
+    margin-top: 68px;
     .filter-container{
       float: left;
       width:12%;
-      
+      @include mobile{
+        display: none;
+      }
     }
     .prod-container{
       border-left:1px solid $border ;
       overflow: hidden;
       width:84%;
       float: right;
-      .sorting{
+      @include mobile{
+        width: 100%;
+      }
+      .card-content{
+        padding: 10px;
+      }
+      .sort-container{
         display: flex;
-        margin:20px 0 0 20px ;
-
-        h3{
-          margin:10px 0 0;
-          padding:0;
-          font-size: 14px;
+        .mobile-srt{
+          display: none;
+          @include mobile{
+            display: block;
+          }
         }
-        ul{
+        .desk-srt{
+          @include mobile{
+            display: none;
+          }
+        }
+        .sorting{
           display: flex;
-          font-weight: bold;
-          color: $grey;
-          li{
-            list-style: none;
-            margin-right:20px ;
-            cursor: pointer;
-            padding-bottom:5px ;
-            &.sel{
-              color:$blue;
-              border-bottom:2px solid $blue ;
+          margin:20px 0 0 20px ;
+          @include mobile{
+            margin: 0;
+            width: 50%;
+            text-align: center;
+            border-right: 1px solid $border;
+          }
+  
+          h3{
+            margin:10px 0 0;
+            padding:0;
+            font-size: 14px;
+            @include mobile{
+              text-align: center;
+              width: 100%;
+              margin-top: 14px;
+            }
+          }
+          ul{
+            display: flex;
+            font-weight: bold;
+            color: $grey;
+            @include mobile{
+              display: none;
+            }
+            li{
+              list-style: none;
+              margin-right:20px ;
+              cursor: pointer;
+              padding-bottom:5px ;
+              &.sel{
+                color:$blue;
+                border-bottom:2px solid $blue ;
+              }
+            }
+          }
+        }
+        .mobile-filter{
+          display: flex;
+          display: none;
+          @include mobile{
+            display: block;
+            width: 50%;
+            text-align: center;
+            h3{
+              display: inline-block;
+              padding-left: 4px;
             }
           }
         }
@@ -126,6 +192,12 @@ body{
         float:left;
         width: 18%;
         margin:15px 0 25px 15px ;
+        border: 1px solid $border;
+        @include mobile {
+          width: 47%;
+          margin: 0;
+          padding: 4px;
+        }
         .cartdivide{
           padding:15px 0 ;
           font-weight: bold;
@@ -143,7 +215,9 @@ body{
         .img-cont{
           width:100%;
           height: 243px;
-          border:1px solid $border;
+          @include mobile{
+            height: 217px;
+          }
           img{
             width:100%
           }
@@ -180,23 +254,33 @@ body{
     .left{
       float:left;
       width:75%;
+      @include mobile{
+        width: 100%;
+      }
       .items{
         border: 1px solid $border;
         padding:10px;
         margin-bottom:15px;
         background-color: $white;
         display: flex;
-        flex-wrap: wrap;
         flex-direction: row;
         justify-content: space-between;
         align-items: space-between;
-        .cont{
-          flex: 1 1 auto;
-          &.img{
-            flex-basis: 12%;
+        
+      
+        flex: 1 1 auto;
+        .img{
+          flex-basis: 12%;
+        }
+        .other-cart-detail{
+          flex-basis: 87%;
+          display: flex;
+          @include mobile{
+            display: inline;
+            padding-left: 20px;
           }
-          &.detail{
-            flex-basis: 28%;
+          .detail{
+            flex-basis: 30%;
             h2{
               font-size:14px;
               font-weight:normal;
@@ -216,11 +300,15 @@ body{
               }
             }
           }
-          &.cnt{
+          .cnt{
             flex-basis: 30%;
             align-items: center;
             justify-content: center;
             display: flex;
+            @include mobile{
+              justify-content: left;
+              padding:10px 0;
+            }
             .vert{
               display: flex;
             }
@@ -242,11 +330,15 @@ body{
             }
             
           }
-          &.remove{
+          .remove{
             display: flex;
-            flex-basis: 20%;
+            flex-basis: 40%;
             align-items: center;
             justify-content: center;
+            @include mobile{
+              justify-content: left;
+              padding:10px 0;
+            }
             button{
               background: none;
               border:none;
@@ -257,6 +349,8 @@ body{
             }
           }
         }
+        
+        
         .img{
           img{
             width:120px
@@ -270,7 +364,7 @@ body{
       border:1px solid $border;
       background: $white;
       @include mobile{
-        display: none;
+        width:100%
       }
       h3{
         padding:10px 10px 20px;
@@ -320,6 +414,56 @@ body{
     text-align: center;
     font-size:14px;
     padding:20px;
+  }
+  .overlay{
+    width: 100%;
+    height: 100vh;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.43);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 6;
+    
+    
+    .over-contain{
+      border:1px solid $border;
+      background-color: $white;
+      margin: 10px 30px;
+      position: relative;
+      top:100px;
+      h3{
+        margin: 10px;
+        padding: 0;
+        padding-bottom: 10px;
+      }
+      ul{
+        margin: 10px;
+        padding: 0;
+        li{
+          list-style: none;
+          margin: 0;
+          padding: 5px 0;
+        }
+      }
+      .button-cont{
+        margin-top: 30px;
+        border-top:1px solid $border ;
+        display: flex;
+        button{
+          flex-basis: 50%;
+          padding: 20px;
+          font-size:14px;
+          color:$blue;
+          font-weight: bold;
+          border: 0;
+          border-right: 1px solid $border;
+          background: transparent;
+        }
+      }
+    }
   }
 }
 
