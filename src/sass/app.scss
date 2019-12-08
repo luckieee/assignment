@@ -106,9 +106,31 @@ body{
     margin-top: 68px;
     .filter-container{
       float: left;
-      width:12%;
+      width:14%;
       @include mobile{
         display: none;
+      }
+      .namefilter{
+        text-align: center;
+        color: $grey;
+        font-weight: bold;
+      }
+      .button-cont{
+        display: none;
+      }
+      .butCont{
+        text-align: center;
+        margin-top:20px;
+        button{
+          background: $blue;
+          border-radius: 20px;
+          border: none;
+          color: $white;
+          font-size: 12px;
+          font-weight: bold;
+          padding: 10px 30px;
+          cursor: pointer;
+        }
       }
     }
     .prod-container{
@@ -463,9 +485,141 @@ body{
           background: transparent;
         }
       }
+      .filter{
+        padding:20px;
+        .namefilter{
+          text-align: center;
+          font-weight: bold;
+        }
+        .butCont{
+          @include mobile{
+            display: none;
+          }
+        }
+      }
     }
   }
 }
+
+
+.slider {
+  position: relative;
+  height: 5px;
+  margin: 45px 0 10px 0;
+}
+
+.slider > div {
+  position: absolute;
+  left: 13px;
+  right: 15px;
+  height: 5px;
+}
+.slider > div > .inverse-left {
+  position: absolute;
+  left: 0;
+  height: 5px;
+  border-radius: 10px;
+  background-color: #CCC;
+  margin: 0 7px;
+}
+
+.slider > div > .inverse-right {
+  position: absolute;
+  right: 0;
+  height: 5px;
+  border-radius: 10px;
+  background-color: #CCC;
+  margin: 0 7px;
+}
+
+
+.slider > div > .range {
+  position: absolute;
+  left: 0;
+  height: 5px;
+  border-radius: 14px;
+  background-color: $blue;
+}
+
+.slider > div > .thumb {
+  position: absolute;
+  top: -7px;
+  z-index: 2;
+  height: 20px;
+  width: 20px;
+  text-align: left;
+  margin-left: -11px;
+  cursor: pointer;
+  border:1px solid $grey;
+  background-color: #FFF;
+  border-radius: 50%;
+  outline: none;
+}
+
+.slider > input[type=range] {
+  position: absolute;
+  pointer-events: none;
+  -webkit-appearance: none;
+  z-index: 3;
+  height: 14px;
+  top: -2px;
+  width: 100%;
+  opacity: 0;
+}
+
+div.slider > input[type=range]:focus::-webkit-slider-runnable-track {
+  background: transparent;
+  border: transparent;
+}
+
+div.slider > input[type=range]:focus {
+  outline: none;
+}
+
+div.slider > input[type=range]::-webkit-slider-thumb {
+  pointer-events: all;
+  width: 28px;
+  height: 28px;
+  border-radius: 0px;
+  border: 0 none;
+  background: $blue;
+  -webkit-appearance: none;
+}
+
+div.slider > input[type=range]::-ms-fill-lower {
+  background: transparent;
+  border: 0 none;
+}
+
+div.slider > input[type=range]::-ms-fill-upper {
+  background: transparent;
+  border: 0 none;
+}
+
+div.slider > input[type=range]::-ms-tooltip {
+  display: none;
+}
+
+.slider > div > .sign {
+  
+  position: absolute;
+  margin-left: -11px;
+  top: -39px;
+  z-index:3;
+  color: $grey;
+  width: 28px;
+  height: 28px;
+  
+}
+
+
+
+.slider > div > .sign > span {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
 
 
 
